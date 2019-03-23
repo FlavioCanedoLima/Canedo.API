@@ -9,7 +9,7 @@ namespace Canedo.DotNetCore.Data.Test
         [Fact]
         public void Test1()
         {
-            new Start(); 
+            new Start().GetRepository(); 
         }
     }
 }

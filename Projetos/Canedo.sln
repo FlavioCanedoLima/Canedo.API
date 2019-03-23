@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28307.489
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.28714.193
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Src", "Src", "{8E5724FA-503B-4FB0-BF89-F6A7E18863B4}"
 EndProject
@@ -11,7 +11,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Canedo.DotNetCore.Api", "Ca
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Canedo.DotNetCore.Data", "Canedo.DotNetCore.Data\Canedo.DotNetCore.Data.csproj", "{5BEA4E8B-CA42-43B6-B33A-95BD18E7BA11}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Canedo.DotNetCore.Data.Test", "Canedo.DotNetCore.Data.Test\Canedo.DotNetCore.Data.Test.csproj", "{9F8EAD59-8A78-40C8-BD47-7C1CF1AAAB1A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Canedo.DotNetCore.Data.Test", "Canedo.DotNetCore.Data.Test\Canedo.DotNetCore.Data.Test.csproj", "{9F8EAD59-8A78-40C8-BD47-7C1CF1AAAB1A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Canedo.Domain.Core", "Canedo.Domain.Core\Canedo.Domain.Core.csproj", "{0CEAF948-1A05-44A2-B054-DC2372A6E21C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -31,6 +33,10 @@ Global
 		{9F8EAD59-8A78-40C8-BD47-7C1CF1AAAB1A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9F8EAD59-8A78-40C8-BD47-7C1CF1AAAB1A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9F8EAD59-8A78-40C8-BD47-7C1CF1AAAB1A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0CEAF948-1A05-44A2-B054-DC2372A6E21C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0CEAF948-1A05-44A2-B054-DC2372A6E21C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0CEAF948-1A05-44A2-B054-DC2372A6E21C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0CEAF948-1A05-44A2-B054-DC2372A6E21C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -39,6 +45,7 @@ Global
 		{EAC05965-7DCF-4B97-BDDD-A188EA6BEEED} = {8E5724FA-503B-4FB0-BF89-F6A7E18863B4}
 		{5BEA4E8B-CA42-43B6-B33A-95BD18E7BA11} = {8E5724FA-503B-4FB0-BF89-F6A7E18863B4}
 		{9F8EAD59-8A78-40C8-BD47-7C1CF1AAAB1A} = {98F72350-F91D-4E43-A0BC-F825B082FE2E}
+		{0CEAF948-1A05-44A2-B054-DC2372A6E21C} = {8E5724FA-503B-4FB0-BF89-F6A7E18863B4}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {8C871D24-350C-4F9E-BC64-68A9AE630C80}

@@ -7,12 +7,33 @@ namespace Canedo.DotNetCore.Data.Repository
 {
     public class UserRepository : IUserRepository
     {
+        readonly private RavenConfig _ravenConfig;
+
+        public UserRepository(RavenConfig ravenConfig)
+        {
+            _ravenConfig = ravenConfig;
+        }
+
         public User GetUser(string userId)
         {
-            using (var session = new RavenConfig<AdminCertificate, HomeNode>().InitDocumentStore("Canedo.Api"))
+            using (var session = _ravenConfig.OpenSession())
             {
-                
-                return new User();
+                return
+                    session
+                    .Advanced
+                    .DocumentQuery<User>()
+                    .WhereEquals(w => w.UserId, userId)
+                    .FirstOrDefault();
+            }
+        }
+
+        public string SaveUser(User user)
+        {
+            using (var session = _ravenConfig.OpenSession())
+            {
+                session.Store(user);
+                session.SaveChanges();
+                return user.Id;
             }
         }
     }

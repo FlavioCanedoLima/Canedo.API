@@ -5,17 +5,21 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Certificate\cluster.server.certificate.canedo.development.run.pfx" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Certificate\cluster.server.certificate.canedo.development.run.pfx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="RavenDB.Client" Version="4.1.4" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Canedo.Domain.Core\Canedo.Domain.Core.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Update="Certificate\admin.client.certificate.canedo.pfx">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
   </ItemGroup>
 
 </Project>

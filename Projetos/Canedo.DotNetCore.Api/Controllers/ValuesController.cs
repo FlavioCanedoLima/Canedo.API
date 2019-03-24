@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Canedo.Domain.Core.Models.AppSettings;
+using Canedo.DotNetCore.Data.Repository;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Canedo.DotNetCore.Api.Controllers

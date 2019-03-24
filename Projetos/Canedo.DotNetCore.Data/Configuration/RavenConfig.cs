@@ -1,41 +1,43 @@
-﻿using Canedo.Domain.Core.Users.Interfaces.Repository;
+﻿using Canedo.Domain.Core.Models.AppSettings;
 using Raven.Client.Documents;
+using Raven.Client.Documents.Session;
 using System;
+using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 
 namespace Canedo.DotNetCore.Data.Configuration
 {
-    public class RavenConfig<C, N> : IDisposable
-        where C : IRavenCertificateRepository  
-        where N : IRavenNodeRespository
-    {
-        readonly private IRavenCertificateRepository _x509Certificate2;
-        readonly private IRavenNodeRespository _ravenNodeRespository;
+    public class RavenConfig : IDisposable
+    {   
+        readonly private Session _session;
 
-        public RavenConfig()
+        public RavenConfig(AppSettings appSettings)
         {
-            _x509Certificate2 = Activator.CreateInstance<C>();
-            _ravenNodeRespository = Activator.CreateInstance<N>();
+            _session = appSettings.Ravendb.Sessions.Where(w => w.DataBaseName.Equals("Canedo.Api")).FirstOrDefault();
         }
 
-        public IDocumentStore DocumentStore { get; private set; }
+        private IDocumentSession DocumentSession { get; set; }
 
-        public IDocumentStore InitDocumentStore(string database)
+        public IDocumentSession OpenSession()
         {
-            DocumentStore = 
+            DocumentSession =
                 new DocumentStore()
                 {
-                    Certificate = _x509Certificate2.Certificate,//new X509Certificate2(@"Certificate\admin.client.certificate.canedo.pfx"),
-                    Database = database,
-                    Urls = _ravenNodeRespository.Urls//new[] { "https://home.canedo.development" }
+                    Certificate = new X509Certificate2(_session.CertificateName),//_x509Certificate2.Certificate,
+                    Database = _session.DataBaseName,
+                    Urls = _session.Urls
                 }
-                .Initialize();
+                .Initialize()
+                .OpenSession();
 
-            return DocumentStore;
+            return DocumentSession;
         }
 
         public void Dispose()
         {
-            DocumentStore.Dispose();
+            if (DocumentSession is null) return;
+
+            DocumentSession.Dispose();
         }
     }
 }

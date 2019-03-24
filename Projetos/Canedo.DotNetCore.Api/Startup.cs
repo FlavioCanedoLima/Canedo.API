@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using Canedo.DotNetCore.Api.Infrasturcture;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
@@ -19,16 +20,23 @@ namespace Canedo.DotNetCore.Api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
-            services.AddSingleton<UserSecretsBuilder>();
+            
+            //My Custom Settings
+            services
+                .AddAppSettings()
+                .AddAuthenticationJwtBearer()
+                .AddCrossCuttingService();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, UserSecretsBuilder userSecrets)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                userSecrets.Build();
+
+                //My Custom Settings
+                env.UseUserSecrets();
             }
             else
             {

@@ -7,8 +7,24 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Certificate\cluster.server.certificate.canedo.development.run.pfx" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Certificate\cluster.server.certificate.canedo.development.run.pfx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.2.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Canedo.Domain.Core\Canedo.Domain.Core.csproj" />
+    <ProjectReference Include="..\Canedo.DotNetCore.Data\Canedo.DotNetCore.Data.csproj" />
   </ItemGroup>
 
 </Project>

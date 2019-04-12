@@ -23,7 +23,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Canedo.Domain.Core\Canedo.Domain.Core.csproj" />
+    <ProjectReference Include="..\Canedo.Domain.UserApplication\Canedo.Domain.Application.User.csproj" />
     <ProjectReference Include="..\Canedo.DotNetCore.Data\Canedo.DotNetCore.Data.csproj" />
   </ItemGroup>
 

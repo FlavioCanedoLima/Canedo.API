@@ -1,7 +1,15 @@
-﻿using Canedo.Domain.Core.Models.AppSettings;
+﻿using Canedo.Domain.Application.User.Data;
+using Canedo.Domain.Application.User.Domain.ApplicationUserApi;
+using Canedo.Domain.Application.User.Infra.Configuration;
+using Canedo.Domain.Core.Models.AppSettings;
+using Canedo.DotNetCore.Data.Configuration;
+using Canedo.DotNetCore.Data.Repository;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.FileProviders;
@@ -10,7 +18,8 @@ using System;
 using System.Linq;
 using System.Xml;
 
-namespace Canedo.DotNetCore.Api.Infrasturcture
+
+namespace Canedo.DotNetCore.Api.Infra
 {
     public static class CustomConfiguration
     {
@@ -25,9 +34,14 @@ namespace Canedo.DotNetCore.Api.Infrasturcture
             return instance;
         }
 
+        private static T GetInstance<T>(this IServiceCollection services) where T : class
+        {
+            return services.BuildServiceProvider().GetService<T>();
+        }
+
         public static IServiceCollection AddAppSettings(this IServiceCollection services)
         {
-            var configuration = services.BuildServiceProvider().GetService<IConfiguration>();
+            var configuration = services.GetInstance<IConfiguration>();
 
             services.AddSingleton(
                 new AppSettings()
@@ -44,7 +58,7 @@ namespace Canedo.DotNetCore.Api.Infrasturcture
 
         public static IServiceCollection AddAuthenticationJwtBearer(this IServiceCollection services)
         {
-            var appSettings = services.BuildServiceProvider().GetService<AppSettings>();
+            var appSettings = services.GetInstance<AppSettings>();
 
             var signingConfigurations = new SigningConfiguration();
             services.AddSingleton(signingConfigurations);
@@ -93,9 +107,42 @@ namespace Canedo.DotNetCore.Api.Infrasturcture
             return services;
         }
 
+        public static IServiceCollection AddCrossCuttingService(this IServiceCollection services)
+        {
+            services.AddTransient<RavenConfig>();
+            services.AddTransient<UserRepository>();
+
+            return services;
+        }
+
+        public static IServiceCollection AddIdentityConfiguration(this IServiceCollection services)
+        {
+            services
+                .AddDbContext<CustomIdentityDbContext<ApplicationUserApi>>(opition => opition.UseSqlServer(services.GetInstance<IConfiguration>().GetConnectionString("CanedoDotNetCoreApi.Identity")));
+            services
+                .AddIdentity<ApplicationUserApi, IdentityRole>()
+                .AddEntityFrameworkStores<CustomIdentityDbContext<ApplicationUserApi>>()
+                .AddDefaultTokenProviders();
+            services
+                .InitializeIdentityDatabase();
+
+            return services;
+        }
+
+        private static IServiceCollection InitializeIdentityDatabase(this IServiceCollection services)
+        {
+            var context = services.GetInstance<CustomIdentityDbContext<ApplicationUserApi>>();
+            var userManager = services.GetInstance<UserManager<ApplicationUserApi>>();
+            var roleManager = services.GetInstance<RoleManager<IdentityRole>>();
+
+            new IdentityConfiguration<ApplicationUserApi>(context, userManager, roleManager).Initialize();
+
+            return services;
+        }
+
         #endregion
         #region ..:: Configure ::..
-        
+
         public static IHostingEnvironment UseUserSecrets(this IHostingEnvironment environment)
         {
             XmlDocument xmldoc = new XmlDocument();

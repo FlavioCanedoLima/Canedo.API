@@ -1,6 +1,6 @@
 ﻿using Canedo.Domain.Core.Models;
 
-namespace Canedo.DotNetCore.Api.Infrasturcture
+namespace Canedo.DotNetCore.Api.Infra
 {
     public class SigningConfiguration : SigningConfigurationBase
     {

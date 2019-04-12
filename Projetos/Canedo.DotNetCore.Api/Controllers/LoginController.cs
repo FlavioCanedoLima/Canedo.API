@@ -1,6 +1,6 @@
 ﻿using Canedo.Domain.Core.Models;
 using Canedo.Domain.Core.Models.AppSettings;
-using Canedo.DotNetCore.Api.Infrasturcture;
+using Canedo.DotNetCore.Api.Infra;
 using Canedo.DotNetCore.Data.Repository;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;

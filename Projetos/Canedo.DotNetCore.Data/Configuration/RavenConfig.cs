@@ -1,5 +1,4 @@
-﻿using Canedo.Domain.Core.Models.AppSettings;
-using Raven.Client.Documents;
+﻿using Raven.Client.Documents;
 using Raven.Client.Documents.Session;
 using System;
 using System.Linq;
@@ -9,26 +8,26 @@ namespace Canedo.DotNetCore.Data.Configuration
 {
     public class RavenConfig : IDisposable
     {   
-        readonly private Session _session;
+        //readonly private Session _session;
 
-        public RavenConfig(AppSettings appSettings)
-        {
-            _session = appSettings.Ravendb.Sessions.Where(w => w.DataBaseName.Equals("Canedo.Api")).FirstOrDefault();
-        }
+        //public RavenConfig(AppSetting appSetting)
+        //{
+        //    _session = appSetting.Ravendb.Sessions.Where(w => w.DataBaseName.Equals("Canedo.Api")).FirstOrDefault();
+        //}
 
         private IDocumentSession DocumentSession { get; set; }
 
         public IDocumentSession OpenSession()
         {
-            DocumentSession =
-                new DocumentStore()
-                {
-                    Certificate = new X509Certificate2(_session.CertificateName),//_x509Certificate2.Certificate,
-                    Database = _session.DataBaseName,
-                    Urls = _session.Urls
-                }
-                .Initialize()
-                .OpenSession();
+            //DocumentSession =
+            //    new DocumentStore()
+            //    {
+            //        Certificate = new X509Certificate2(_session.CertificateName),//_x509Certificate2.Certificate,
+            //        Database = _session.DataBaseName,
+            //        Urls = _session.Urls
+            //    }
+            //    .Initialize()
+            //    .OpenSession();
 
             return DocumentSession;
         }

@@ -1,29 +1,19 @@
-﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.2</TargetFramework>
     <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
-    <UserSecretsId>2e73b3b1-815d-46cc-9ee4-d97ce3f76778</UserSecretsId>
+    <UserSecretsId>a3bf3ea3-f499-4df1-a606-d495fc9d57ac</UserSecretsId>
   </PropertyGroup>
-
-  <ItemGroup>
-    <None Remove="Certificate\cluster.server.certificate.canedo.development.run.pfx" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Content Include="Certificate\cluster.server.certificate.canedo.development.run.pfx">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
-    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.2.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Canedo.Domain.UserApplication\Canedo.Domain.Application.User.csproj" />
+    <ProjectReference Include="..\Canedo.Core.Identity\Canedo.Core.Identity.csproj" />
+    <ProjectReference Include="..\Canedo.Core.Infra\Canedo.Core.Infra.csproj" />
     <ProjectReference Include="..\Canedo.DotNetCore.Data\Canedo.DotNetCore.Data.csproj" />
   </ItemGroup>
 

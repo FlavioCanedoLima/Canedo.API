@@ -1,5 +1,5 @@
-﻿using Canedo.Domain.Core.Models;
-using Canedo.Domain.Core.Users.Interfaces.Repository;
+﻿using Canedo.Core.Domain.Models;
+using Canedo.Core.Domain.Users.Interfaces.Repository;
 using Canedo.DotNetCore.Data.Configuration;
 
 

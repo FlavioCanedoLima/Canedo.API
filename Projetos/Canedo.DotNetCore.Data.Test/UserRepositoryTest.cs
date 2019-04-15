@@ -1,7 +1,3 @@
-using Canedo.Domain.Core.Models;
-using Canedo.DotNetCore.Data.Repository;
-using Xunit;
-
 namespace Canedo.DotNetCore.Data.Test
 {
     public class UserRepositoryTest

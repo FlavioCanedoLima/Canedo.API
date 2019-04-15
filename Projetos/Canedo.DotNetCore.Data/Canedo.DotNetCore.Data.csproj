@@ -19,7 +19,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Canedo.Domain.Core\Canedo.Domain.Core.csproj" />
+    <ProjectReference Include="..\Canedo.Core.Domain\Canedo.Core.Domain.csproj" />
   </ItemGroup>
 
 </Project>

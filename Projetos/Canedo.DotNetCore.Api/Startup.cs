@@ -1,4 +1,6 @@
-﻿using Canedo.DotNetCore.Api.Infra;
+﻿using Canedo.Core.Identity.Infra.Extensions;
+using Canedo.Core.Infra.UserSecrets.Extensions;
+using Canedo.DotNetCore.Api.Infra;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -26,9 +28,7 @@ namespace Canedo.DotNetCore.Api
                 .AddAppSettings()
                 .AddAuthenticationJwtBearer()
                 .AddCrossCuttingService()
-                .AddIdentityConfiguration();
-
-            
+                .AddIdentitySqlServerConfiguration();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

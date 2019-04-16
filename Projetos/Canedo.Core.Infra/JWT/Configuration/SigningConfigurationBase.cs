@@ -1,13 +1,15 @@
-﻿using Canedo.Core.Domain.Configuration;
+﻿using Canedo.Core.Infra.JWT.Interfaces;
 using Microsoft.IdentityModel.Tokens;
 using System.Security.Cryptography;
 
-namespace Canedo.Core.Domain.Models
+namespace Canedo.Core.Infra.JWT.Configuration
 {
     public abstract class SigningConfigurationBase : ISigningConfiguration
     {
         public SecurityKey Key { get; set; }
         public SigningCredentials SigningCredentials { get; set; }
+
+        public TokenConfiguration TokenConfiguration { get; set; }
 
         public virtual void Configurations()
         {

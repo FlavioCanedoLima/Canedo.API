@@ -1,5 +1,5 @@
-﻿using Canedo.Core.Identity.Domain.UserApi.Model;
-using Canedo.Core.Identity.Domain.Interfaces;
+﻿using Canedo.Core.Identity.Domain.Interfaces;
+using Canedo.Core.Identity.Domain.UserApi.Model;
 using Microsoft.AspNetCore.Identity;
 
 namespace Canedo.Core.Identity.Domain.UserApi.Services
@@ -17,7 +17,7 @@ namespace Canedo.Core.Identity.Domain.UserApi.Services
             signInManager_ = signInManager;
         }
 
-        private IdentityUserApi CurrentIdentityUser { get; set; }
+        public IdentityUserApi CurrentIdentityUser { get; set; }
 
         public bool ValidateUser(string userId, string password)
         {

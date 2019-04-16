@@ -6,5 +6,6 @@ namespace Canedo.Core.Identity.Application.Interfaces
     {
         bool ValidateUser(string userId, string password);
         bool ValidateRole(string role);
+        IdentityUser GetCurrentIdentityUser();
     }
 }

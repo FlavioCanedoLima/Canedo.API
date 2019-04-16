@@ -29,7 +29,7 @@ namespace Canedo.Core.Identity.Infra.Extensions
                 .AddDefaultTokenProviders();
             services
                 .InitializeIdentityDatabase();
-            services
+            services                
                 .AddScoped<IValidateUserService, ValidateUserApiService>()
                 .AddScoped<IValidateCredentialsService, ValidateCredentialsService>();
 

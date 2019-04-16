@@ -1,4 +1,5 @@
 ﻿using Canedo.Core.Identity.Infra.Extensions;
+using Canedo.Core.Infra.JWT.Extensions;
 using Canedo.Core.Infra.UserSecrets.Extensions;
 using Canedo.DotNetCore.Api.Infra;
 using Microsoft.AspNetCore.Builder;
@@ -25,9 +26,8 @@ namespace Canedo.DotNetCore.Api
             
             //My Custom Settings
             services
-                .AddAppSettings()
-                .AddAuthenticationJwtBearer()
-                .AddCrossCuttingService()
+                .AddCustomConfigurations()
+                .AddAuthenticationJwtBearer()                
                 .AddIdentitySqlServerConfiguration();
         }
 

@@ -1,11 +1,14 @@
-﻿using Canedo.Core.Domain.Models;
+﻿using Canedo.Core.Infra.JWT.Configuration;
+using Canedo.DotNetCore.Api.Infra.AppSettings;
 
 namespace Canedo.DotNetCore.Api.Infra
 {
     public class SigningConfiguration : SigningConfigurationBase
     {
-        public SigningConfiguration()
+        public SigningConfiguration(TokenConfiguration tokenConfiguration)
         {
+            TokenConfiguration = tokenConfiguration;
+
             Configurations();
         }
 

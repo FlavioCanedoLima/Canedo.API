@@ -1,5 +1,6 @@
 ﻿using Canedo.Core.Identity.Application.Interfaces;
 using Canedo.Core.Identity.Domain.Interfaces;
+using Microsoft.AspNetCore.Identity;
 
 namespace Canedo.Core.Identity.Application.Services
 {
@@ -22,6 +23,11 @@ namespace Canedo.Core.Identity.Application.Services
         public bool ValidateRole(string role)
         {
             return validateUserService_.ValidateRole(role);
+        }
+
+        public IdentityUser GetCurrentIdentityUser()
+        {
+            return validateUserService_.CurrentIdentityUser;
         }
 
         #endregion

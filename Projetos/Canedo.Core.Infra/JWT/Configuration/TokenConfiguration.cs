@@ -1,6 +1,6 @@
-﻿namespace Canedo.DotNetCore.Api.Infra.AppSettings
+﻿namespace Canedo.Core.Infra.JWT.Configuration
 {
-    public class TokenConfigurations
+    public class TokenConfiguration
     {
         public string Audience { get; set; }
         public string Issuer { get; set; }

@@ -21,7 +21,7 @@ namespace Canedo.Core.Identity.Domain.UserApi.Services
 
         public bool ValidateUser(string userId, string password)
         {
-            var CurrentIdentityUser = GetIdentityUser(userId);
+            CurrentIdentityUser = GetIdentityUser(userId);
 
             if (CurrentIdentityUser is null) return false;
 

@@ -1,2 +1,4 @@
 # Canedo.API
-Exemplos de códigos com API Rest
+Kick Starter para projetos
+
+Documentação em breve...

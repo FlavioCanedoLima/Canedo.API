@@ -10,9 +10,4 @@
     </Reference>
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Configuration\" />
-    <Folder Include="Interfaces\" />
-  </ItemGroup>
-
 </Project>

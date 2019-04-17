@@ -31,19 +31,13 @@ namespace Canedo.DotNetCore.Api.Controllers
                 var credentialIsValid = validateCredentialsService_.ValidateUser(usuario.UserID, usuario.Password);
 
                 if (credentialIsValid)
-                    allCredentialsIsValid = validateCredentialsService_.ValidateRole("Acesso-APIAlturas");
+                    allCredentialsIsValid = validateCredentialsService_.ValidateRole("AdminRoot");
 
                 if (allCredentialsIsValid)
                 {
-                    var tokenService =
-                        new TokenService(
-                            validateCredentialsService_.GetCurrentIdentityUser(),
-                            signingConfiguration);
+                    var tokenService = new TokenService(validateCredentialsService_.GetCurrentIdentityUser(), signingConfiguration);
 
-                    var token = tokenService.GenerateToken(
-                        signingConfiguration.TokenConfiguration.Seconds,
-                        signingConfiguration.TokenConfiguration.Issuer,
-                        signingConfiguration.TokenConfiguration.Audience);
+                    var token = tokenService.GenerateToken();
 
                     return new
                     {

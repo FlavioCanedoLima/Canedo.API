@@ -10,7 +10,7 @@ namespace Canedo.Core.Identity.Infra.Configuration
         private readonly CustomIdentityDbContext<T> _context;
         private readonly UserManager<T> _userManager;
         private readonly RoleManager<IdentityRole> _roleManager;
-        private const string _role = "Acesso-APIAlturas";
+        private const string _role = "AdminRoot";
 
 
         public IdentityConfiguration(
@@ -38,8 +38,7 @@ namespace Canedo.Core.Identity.Infra.Configuration
                     }
                 }
 
-                CreateUser(ResolveInstance("admin_apialturas", "admin-apialturas@teste.com.br", true), "AdminAPIAlturas01!", _role);
-                CreateUser(ResolveInstance("usrinvalido_apialturas", "usrinvalido-apialturas@teste.com.br", true), "UsrInvAPIAlturas01!");
+                CreateUser(ResolveInstance("admin", "admin@canedo.com.br", true), "admin@123mudar", _role);
             }
         }
 

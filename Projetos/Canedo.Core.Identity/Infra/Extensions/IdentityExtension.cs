@@ -5,6 +5,7 @@ using Canedo.Core.Identity.Domain.Interfaces;
 using Canedo.Core.Identity.Domain.UserApi.Model;
 using Canedo.Core.Identity.Domain.UserApi.Services;
 using Canedo.Core.Identity.Infra.Configuration;
+using Canedo.Core.Infra.Helpers.Extensions;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -14,11 +15,6 @@ namespace Canedo.Core.Identity.Infra.Extensions
 {
     public static class IdentityExtension
     {
-        private static T GetInstance<T>(this IServiceCollection services) where T : class
-        {
-            return services.BuildServiceProvider().GetService<T>();
-        }
-
         public static IServiceCollection AddIdentitySqlServerConfiguration(this IServiceCollection services)
         {
             services

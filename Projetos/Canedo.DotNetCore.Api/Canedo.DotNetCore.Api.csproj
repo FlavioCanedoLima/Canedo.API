@@ -14,7 +14,6 @@
   <ItemGroup>
     <ProjectReference Include="..\Canedo.Core.Identity\Canedo.Core.Identity.csproj" />
     <ProjectReference Include="..\Canedo.Core.Infra\Canedo.Core.Infra.csproj" />
-    <ProjectReference Include="..\Canedo.DotNetCore.Data\Canedo.DotNetCore.Data.csproj" />
   </ItemGroup>
 
 </Project>

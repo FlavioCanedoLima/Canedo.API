@@ -22,7 +22,7 @@ namespace Canedo.Core.Infra.JWT.Services
         public DateTime DateCreated { get; private set; }
         public DateTime DateExpire { get; private set; }
 
-        public string GenerateToken(double seconds, string issuer, string audience)
+        public string GenerateToken()
         {
             var identity =
                 new ClaimsIdentity(
@@ -34,13 +34,13 @@ namespace Canedo.Core.Infra.JWT.Services
                     });
 
             DateCreated = DateTime.Now;
-            DateExpire = DateCreated + TimeSpan.FromSeconds(seconds);
+            DateExpire = DateCreated + TimeSpan.FromSeconds(signingConfigurations_.TokenConfiguration.Seconds);
 
             var handler = new JwtSecurityTokenHandler();
             var securityToken = handler.CreateToken(new SecurityTokenDescriptor
             {
-                Issuer = issuer,
-                Audience = audience,
+                Issuer = signingConfigurations_.TokenConfiguration.Issuer,
+                Audience = signingConfigurations_.TokenConfiguration.Audience,
                 SigningCredentials = signingConfigurations_.SigningCredentials,
                 Subject = identity,
                 NotBefore = DateCreated,
